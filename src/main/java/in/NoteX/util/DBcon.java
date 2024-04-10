@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBcon {
 	 private static final String URL = "jdbc:mysql://localhost:3306/NoteX";
 	 private static final String USERNAME = "root";
-	 private static final String PASSWORD = "6269";
+	 private static final String PASSWORD = "root";
     static {
         try {
             // Load the MySQL JDBC driver
