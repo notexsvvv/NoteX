@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>NoteX- Welcome User</title>
 </head>
 <body>
 
 
 <body>
-    <%
+    <%	
         // Retrieve the session object
         HttpSession ss = request.getSession(false);
 
@@ -19,14 +19,17 @@
         if (ss != null && ss.getAttribute("username") != null) {
             // Get the username from the session
             String username = (String) ss.getAttribute("username");
+            String pass = (String) ss.getAttribute("pass");
+            
     %>
 
       <div class="container">
         <h1>Welcome, <%= username %>!</h1>
         <p>We're delighted to have you on our platform.🌟</p>
         <h3>Explore, learn, and connect with our vibrant community! 🚀</h3>
-        <p>Feel free to stay as long as you like, and when you're ready,</p> 
+        <p>Feel free to stay as long as you like, and when you're ready, <%= pass %></p> 
         you can <a href="logout.jsp">LOGOUT</a> securely.
+        <div> </div>
     </div>
 
     <%
