@@ -27,5 +27,5 @@ create table login_info
     );
     select * from UserUnderReview;
     -- delete  from UserUnderReview where userid = 2;
-    alter user root@localhost identified by 'root';
+   -- alter user root@localhost identified by 'root';
     
