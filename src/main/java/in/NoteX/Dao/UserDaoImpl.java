@@ -45,5 +45,30 @@ public class UserDaoImpl  {
             return false;
         }
 	}
+	
+   	public static String getUserTypeString(String username, String password) {
+   		String userType ="";
+   		String query = "SELECT * FROM login_info WHERE username = ? AND password = ?";
+   	 try (Connection connection = DBcon.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+            	String usernameString = resultSet.getString("username"); 
+            	String passString = resultSet.getString("password");
+            	 userType = resultSet.getString("usertype");
+				
+			}
+
+            return userType ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+   	 
+	}
 
 }

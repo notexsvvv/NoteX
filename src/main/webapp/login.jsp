@@ -27,10 +27,15 @@
         <% } %>
         
         <%-- Display error message if Register Successful --%>
+        <% String logout = request.getParameter("logout");
+            if (logout != null && logout.equals("success")) { %>
+                <p style="color: green;">Your logout is Successful. Please Login again .</p>
+        <% } %>
         <% String rs = request.getParameter("registration");
             if (rs != null && rs.equals("success")) { %>
-                <p style="color: green;">Your Registration is Successful. Please Login.</p>
+                <p style="color: green;">Your Registration  is Successful. Please Login again .</p>
         <% } %>
+        
     </div>
 </body>
 </body>

@@ -25,14 +25,29 @@ public class StudentUser extends User {
 //	}
 //	
 	
-		public void setInputStreamFILE(InputStream inputStreamFILE) {
+		public void setInputStreamFILE(InputStream inputStreamFILE) 
+		{
 			try {	this.inputStreamFILE = inputStream.getInputStream();
-		}
-			catch(Exception e) {
+			
+				}
+			catch(Exception e) 
+			{
 				System.out.println("Error at StudentUser InputStream file ");
-				
+				System.out.println(e.getStackTrace()+""+ e.getCause() +"  "+ e.getMessage());
 				
 			}
+		}
+		
+	public void setInputStreamFILE(InputStream inputStreamFILE , int x)
+	{
+				try {	
+						this.inputStreamFILE = inputStreamFILE;
+					}
+				catch(Exception e) {
+					System.out.println("Error at StudentUser InputStream file ");
+					System.out.println(e.getStackTrace()+""+ e.getCause() +"  "+ e.getMessage());
+					
+				}
 	}
 	
 	public void setUsertype(String usertype) {

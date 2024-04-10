@@ -9,7 +9,8 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <servlet>
+<!--  loginservlet-->
+  <servlet> 
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
@@ -19,6 +20,8 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  
+  <!--RegisterServlet-->
   <servlet>
     <description></description>
     <display-name>RegisterServlet</display-name>
@@ -29,6 +32,8 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
+  
+<!--  Register.jsp-->
   <servlet>
     <description></description>
     <display-name>Register</display-name>
@@ -39,6 +44,8 @@
     <servlet-name>Register</servlet-name>
     <url-pattern>/Register</url-pattern>
   </servlet-mapping>
+  
+ <!--registrationProcessServlet--> 
   <servlet>
     <description></description>
     <display-name>registrationProcessServlet</display-name>
@@ -49,4 +56,28 @@
     <servlet-name>registrationProcessServlet</servlet-name>
     <url-pattern>/registrationProcessServlet</url-pattern>
   </servlet-mapping>
+  
+ <!--Logout--> 
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>in.NoteX.servlet.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!--<servlet>
+    <description></description>
+    <display-name>UserAproval</display-name>
+    <servlet-name>UserAproval</servlet-name>
+    <servlet-class>in.NoteX.servlet.UserAproval</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserAproval</servlet-name>
+    <url-pattern>/UserAproval</url-pattern>
+  </servlet-mapping>-->
 </web-app>
