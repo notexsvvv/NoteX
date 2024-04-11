@@ -8,8 +8,11 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-     background-color: #AEFD6C;
-     background-image: url('background.png');
+     /*background-color: #AEFD6C;
+     background-image: url('background.png');*/
+     /*background: #ad5389;*/ /* fallback for old browsers */
+     background: -webkit-linear-gradient(to top, #a8edea, #fed3e3);
+     background: linear-gradient(to left, #a8edea, #fed2e3);
      background-size: cover; /* or 'contain' based on your preference */
      background-position: center center;
      background-repeat: no-repeat;
@@ -21,21 +24,24 @@ body {
     max-width: 400px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 1, 0.5);
-    background-color: #AEFD6C;
+    box-shadow: 0 0 20px rgba(0, 0, 1, 0.5);
+    background-color: transparent;
     text-align: center; /* Center the content */
 }
 
 h1 {
-    font-weight: bold;
+    /*font-weight: bold;*/
     text-align: center;
-    color: #333;
+    color: black;
 }
 
 label {
+	font-weight: bold;
     display: block;
     margin: 10px 0;
-    color: #555;
+    color: black;
+    text-align: left;
+    margin-left: 10px;
 }
 
 input {
@@ -71,6 +77,8 @@ a {
     font-weight: bold;
 }
 
-a:hover {
-    color: #0056b3;
+
+p:hover {
+	text-decoration: underline;
+    color: #007BFF;
 }

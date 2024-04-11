@@ -11,14 +11,14 @@
  <div class="container">
 
 
-    <h2>Registration Form</h2>
+    <h2>Register</h2>
     <form action="registrationProcessServlet" method="post" enctype="multipart/form-data">
         <label for="fullname">Full Name:</label>
         <input type="text" id="fullname" name="fullname" required><br><br>
         
         <label for="email">Email ID:</label>
         <input type="email" id="email" name="email" required><br><br>
-        <label for="username">username ID:</label>	
+        <label for="username">Username:</label>	
         <input type="text" id="username" name="username" required><br><br>
         
         <label for="usertype">User Type:</label>
@@ -43,10 +43,11 @@
         <label for="confirm_password">Confirm Password:</label>
         <input type="password" id="confirm_password" name="confirm_password" required><br><br>
         
-        <input type="checkbox" id="terms" name="terms" required>
-        <label for="terms">Agree to our terms and conditions</label><br><br>
+        <input type="checkbox" id="terms" name="terms" required> 
+        <label for="terms">Agree to our terms and conditions</label> <br><br>
         
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit"> <br>
+        <br>
         <input type="reset" value="Reset">
     </form>
 
