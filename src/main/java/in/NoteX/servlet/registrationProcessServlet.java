@@ -120,7 +120,7 @@ public class registrationProcessServlet extends HttpServlet {
 						TeacherUser tech = new TeacherUser();
 						insertIntoTeacher(tech);
 						if (RegdaoImp.addUserUnderReviews(tech)) {
-							response.sendRedirect("login.jsp?registration=success");
+							response.sendRedirect("Register.jsp?registration=success");
 							// response.sendRedirect("login.jsp?registration=success");
 						} else {
 							response.sendRedirect("Register.jsp?error=1");

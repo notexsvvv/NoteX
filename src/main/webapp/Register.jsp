@@ -9,9 +9,34 @@
 </head>
 <body>
  <div class="container">
-
+		
 
     <h2>Register</h2>
+      <%-- Display error message if registration fails --%>
+         <% String success = request.getParameter("registration");
+           if (success != null && success.equals("success")) { %>
+            <p style="color: yellow;">Registration success. registration Under review  .</p>
+        <% } %>
+        <% String error = request.getParameter("error");
+           if (error != null && error.equals("1")) { %>
+            <p style="color: red;">Registration failed. Please try again.</p>
+        <% } %>
+        <% String fileerror = request.getParameter("error");
+           if (fileerror != null && fileerror.equals("3")) { %>
+            <p style="color: red;">file must be Student OR  Teacher  .</p>
+        <% } %>
+        <% String imgerr = request.getParameter("error");
+           if (imgerr != null && imgerr.equals("2")) { %>
+            <p style="color: red;">Select User Type must be in img , png , jpg format  .</p>
+        <% } %>
+        <% String passerr = request.getParameter("error");
+           if (passerr != null && passerr.equals("4")) { %>
+            <p style="color: red;">Confirm Password: must be same as Password.</p>
+        <% } %>
+        <% String imgSizeerr = request.getParameter("error");
+           if (imgSizeerr != null && imgSizeerr.equals("5")) { %>
+            <p style="color: red;">Image Size must be less than 16 MB .</p>
+        <% } %>
     <form action="registrationProcessServlet" method="post" enctype="multipart/form-data">
         <label for="fullname">Full Name:</label>
         <input type="text" id="fullname" name="fullname" required><br><br>
@@ -56,31 +81,7 @@
     
         <p><a href="index.html">Back to Home</a></p>
     
-        <%-- Display error message if registration fails --%>
-         <% String success = request.getParameter("registration");
-           if (success != null && success.equals("success")) { %>
-            <p style="color: red;">Registration success. registration Under review  .</p>
-        <% } %>
-        <% String error = request.getParameter("error");
-           if (error != null && error.equals("1")) { %>
-            <p style="color: red;">Registration failed. Please try again.</p>
-        <% } %>
-        <% String fileerror = request.getParameter("error");
-           if (fileerror != null && fileerror.equals("3")) { %>
-            <p style="color: red;">file must be Student OR  Teacher  .</p>
-        <% } %>
-        <% String imgerr = request.getParameter("error");
-           if (imgerr != null && imgerr.equals("2")) { %>
-            <p style="color: red;">Select User Type must be in img , png , jpg format  .</p>
-        <% } %>
-        <% String passerr = request.getParameter("error");
-           if (passerr != null && passerr.equals("4")) { %>
-            <p style="color: red;">Confirm Password: must be same as Password.</p>
-        <% } %>
-        <% String imgSizeerr = request.getParameter("error");
-           if (imgSizeerr != null && imgSizeerr.equals("5")) { %>
-            <p style="color: red;">Image Size must be less than 16 MB .</p>
-        <% } %>
+      
       </div>
 </body>
  
