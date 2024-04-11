@@ -1,5 +1,87 @@
-@charset "utf-8";
-
 body {
-	background-color: green;
+  font-family: Arial, sans-serif;
+  background: #ad5389; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #a8edea, #fed3e3);
+  background: linear-gradient(to left, #a8edea, #fed2e3);
+  background-size: cover;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+.container {
+  width: 38%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: transparent;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type="file"] {
+  margin-top: 5px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #45a049;
+}
+
+p {
+  text-align: center;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
 }
