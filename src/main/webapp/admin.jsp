@@ -73,8 +73,10 @@
 
         </div>
         <div class="one-quarter" id="switch">
+        <a href ="Logout">
+        
           <button id="logout-btn">Logout</button>
-
+		</a>
         </div>
 
       </div>
