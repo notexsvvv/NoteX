@@ -70,5 +70,56 @@ public class UserDaoImpl  {
         }
    	 
 	}
+   	
+   	public static  boolean  setTokenforLogin ( String username, String token) {
+   	
+   		String query = "UPDATE login_info SET token = ? WHERE username =?";
+   	 try (Connection connection = DBcon.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+   		 
+            preparedStatement.setString(1, token);
+            preparedStatement.setString(2, username);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.print("Token at db set = "+ token);
+            if (rowsAffected > 0) {
+            	return true;
+				
+			}
+            else {
+            	return false ;
+            }
+
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("error at setToken "+ e.getLocalizedMessage());
+            return false;
+        }
+   	}
+   	
+   	public static boolean getTokenforVerification(String username, String token) {
+        String query = "SELECT token FROM login_info WHERE username = ?";
+        try (Connection connection = DBcon.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        		
+            preparedStatement.setString(1, username);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String storedToken = resultSet.getString("token");
+                    System.out.print("Token at db set = "+ token);
+                    return storedToken.equals(token); // Compare stored token with provided token
+                } else {
+                    System.out.print("no match found for the token ");
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            // Handle any SQL exceptions
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }

@@ -1,4 +1,5 @@
 package in.NoteX.servlet;
+import in.NoteX.Dao.TokenGenerator;
 import in.NoteX.Dao.UserDaoImpl;
 
 import jakarta.servlet.ServletException;
@@ -9,14 +10,20 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.security.PublicKey;
+
+import org.apache.jasper.runtime.ProtectedFunctionMapper;
+import org.eclipse.jdt.internal.compiler.ast.AND_AND_Expression;
 
 public class LoginServlet extends HttpServlet {
+	String string;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 	       String username = request.getParameter("username");
 	        String password = request.getParameter("password");
-	        	
-	        if (UserDaoImpl.isValidUser(username, password)) {
+	      
+			if (UserDaoImpl.isValidUser(username, password) && TokenGenerator.isTokenSet(username)  ) {
 	        	
 	        	
 	        String userTypeString =	UserDaoImpl.getUserTypeString(username, password);
@@ -25,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 	        		 HttpSession adminsession = request.getSession();
 	        		 adminsession.setAttribute("usertype", userTypeString);
 	        		 adminsession.setAttribute("username", username);
+	        		 adminsession.setAttribute("token", TokenGenerator.setToken(username) );
 	        		 response.sendRedirect("admin.jsp");
 	        	}
 	        	
