@@ -19,7 +19,7 @@ import java.util.List;
 public class UserAproval extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         System.out.println("Servlet called");
@@ -58,8 +58,8 @@ public class UserAproval extends HttpServlet {
         out.println(jsonBuilder.toString());
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 
     // Encode image data to Base64
