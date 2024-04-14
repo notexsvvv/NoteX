@@ -11,6 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/userAproval.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,9 +24,14 @@
         	if( ((String)ss.getAttribute("usertype")).equals("admin")){
             // Get the username from the session
             String username = (String) ss.getAttribute("username");
+            String token = (String)ss.getAttribute("token");
+           
+            Cookie cookie[]= request.getCookies();
+            
+            
     %>
     																						
-
+	
    <nav class="navbar navbar-expand-lg  bg-dark border-bottom border-body sticky-top bg-body-tertiary"
     data-bs-theme="dark">
     <div class="container-fluid">
@@ -85,7 +91,8 @@
   <!-- NEV END -->
   <!-- Body -->
   <div class="main-div">
-  main div 
+  main div <h1> <%=token %>
+  cookie = <%=cookie %></h1>
   </div>
   <div class="Upload-notes-div">
   upload notes div
@@ -99,8 +106,28 @@
   <div class="Upload-imptopics-div">
   Upload-imptopics-div
   </div>
-  <div class="Userapproval-div">
-  Userapproval-div
+  <div class="Userapproval-div" id = "Userapproval">
+ <div id="userTableDiv">
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Username</th>
+                <th>Email</th>
+               <!--  <th class ="linkedin-th">LinkedIn</th> -->
+                <th>Mobile</th>
+                <th>User Type</th>
+                <!-- <th>Password</th> -->
+                <th>Terms</th>
+                <th>College ID Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be dynamically added here -->
+        </tbody>
+    </table>
+</div>
   </div>
   <div class="Notes-pyqapproval-div">
   Notes-pyqapproval-div
@@ -108,17 +135,19 @@
   <div class="Delete-approval-div">
   Delete-approval-div
   </div>
+ 
   <!-- Footer -->
-  <script src = "js/admin.js"></script>
-  <!-- <script src="js/getdata.js">
-  </script> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+ 
+  
     <script
   src="https://code.jquery.com/jquery-2.2.4.js"
   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
   crossorigin="anonymous"></script>
+    <script src = "js/admin.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
 </body>
 

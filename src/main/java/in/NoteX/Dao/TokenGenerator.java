@@ -27,14 +27,10 @@ public class TokenGenerator {
 			return null;
 		}
     }
-    public static boolean isTokenSet(String username) {
-   	String  string =TokenGenerator.setToken(username);
-   	System.out.print( "is token set " +string);
-   	if(string==null) {
-   		return false;
-   	}
-   	else {
-			return true;
-		}
-    }
+    
+	/*
+	 * public static boolean isTokenSet(String username) { String string
+	 * =TokenGenerator.setToken(username); System.out.print( "is token set "
+	 * +string); if(string==null) { return false; } else { return true; } }
+	 */
 }

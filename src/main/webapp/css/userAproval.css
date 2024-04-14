@@ -1,0 +1,52 @@
+/* Add solid black borders to the table */
+
+#userTable th.linkedin,
+#userTable td.linkedin {
+  width: 50px;
+}
+
+/* Expand the width of the LinkedIn column on hover */
+#userTable th.linkedin:hover,
+#userTable td.linkedin:hover {
+  width: auto; /* Set width to auto to expand to fit content */
+}
+
+/* Add a transition effect for smooth width change */
+#userTable th.linkedin,
+#userTable td.linkedin {
+  transition: width 0.3s; /* Transition effect for width change */
+}
+
+#userTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#userTable th,
+#userTable td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Resize the image */
+#userTable img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Zoom effect on hover */
+#userTable img:hover {
+  transform: scale(2);
+}
+
+
+/* Shrink and expand LinkedIn column on hover */
+
+
+/* Make the div scrollable in x-axis */
+.userTableDiv {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent text wrapping */
+}

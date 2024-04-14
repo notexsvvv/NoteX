@@ -42,7 +42,7 @@ public class GetAprovalUser {
                 user.setInputStreamFILE(resultSet.getBinaryStream("collegeid") ,1);
                 System.out.println( "@@@@@@"  +resultSet.getBinaryStream("collegeid"));
                 
-                user.setPassword(resultSet.getString("password"));
+				/* user.setPassword(resultSet.getString("password")); */
                 user.setTerms(resultSet.getString("terms"));
 
 
