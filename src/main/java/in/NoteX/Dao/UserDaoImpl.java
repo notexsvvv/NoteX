@@ -98,7 +98,7 @@ public class UserDaoImpl  {
         }
    	}
    	
-   	public static boolean getTokenforVerification(String username, String token) {
+   	public static String getTokenforVerification(String username) {
         String query = "SELECT token FROM login_info WHERE username = ?";
         try (Connection connection = DBcon.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -108,18 +108,45 @@ public class UserDaoImpl  {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     String storedToken = resultSet.getString("token");
-                    System.out.print("Token at db set = "+ token);
-                    return storedToken.equals(token); // Compare stored token with provided token
+                   // System.out.print("Token at db set = "+ token);
+                    return storedToken; // Compare stored token with provided token
                 } else {
                     System.out.print("no match found for the token ");
-                    return false;
+                    return null;
                 }
             }
         } catch (SQLException e) {
             // Handle any SQL exceptions
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
+   	
+   	
+ public static boolean deleteFromDatabase(String username) {
+        	
+	 String query = "delete from userunderreview where username =?";
+   	 try (Connection connection = DBcon.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+   		 
+            preparedStatement.setString(1, username);
 
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.print("data deleted for "+ username);
+            if (rowsAffected > 0) {
+            	return true;
+				
+			}
+            else {
+            	return false ;
+            }
+
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("error at setToken "+ e.getLocalizedMessage());
+            return false;
+        }
+   	
+ }
 }

@@ -9,8 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-<!--  loginservlet-->
-  <servlet> 
+  <servlet>
     <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
@@ -20,8 +19,6 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
-  
-  <!--RegisterServlet-->
   <servlet>
     <description></description>
     <display-name>RegisterServlet</display-name>
@@ -32,8 +29,6 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
-  
-<!--  Register.jsp-->
   <servlet>
     <description></description>
     <display-name>Register</display-name>
@@ -44,8 +39,6 @@
     <servlet-name>Register</servlet-name>
     <url-pattern>/Register</url-pattern>
   </servlet-mapping>
-  
- <!--registrationProcessServlet--> 
   <servlet>
     <description></description>
     <display-name>registrationProcessServlet</display-name>
@@ -56,8 +49,6 @@
     <servlet-name>registrationProcessServlet</servlet-name>
     <url-pattern>/registrationProcessServlet</url-pattern>
   </servlet-mapping>
-  
- <!--Logout--> 
   <servlet>
     <description></description>
     <display-name>Logout</display-name>
@@ -68,16 +59,24 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
-  
-  
-  <!--<servlet>
+  <servlet>
     <description></description>
-    <display-name>UserAproval</display-name>
-    <servlet-name>UserAproval</servlet-name>
-    <servlet-class>in.NoteX.servlet.UserAproval</servlet-class>
+    <display-name>admin</display-name>
+    <servlet-name>admin</servlet-name>
+    <servlet-class>in.NoteX.servlet.admin</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UserAproval</servlet-name>
-    <url-pattern>/UserAproval</url-pattern>
+    <servlet-name>admin</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+ <!-- <servlet>
+    <description></description>
+    <display-name>DeleteUserServlet</display-name>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>in.NoteX.servlet.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/deleteUser</url-pattern>
   </servlet-mapping>-->
 </web-app>

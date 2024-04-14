@@ -135,40 +135,9 @@ public class registrationProcessServlet extends HttpServlet {
 			response.sendRedirect("Register.jsp?error=4");
 		}
 
-		//if (RegdaoImp.addUserUnderReviews(std)) {
-//			response.sendRedirect("login.jsp?registration=success");
-//		} else {
-//			response.sendRedirect("register.jsp?error=1");
-//		}
+		
 
 	}
 
 }
 
-//Part file=request.getPart("image");
-//
-//String imageFileName=file.getSubmittedFileName();  // get selected image file name
-//System.out.println("Selected Image File Name : "+imageFileName);
-//
-//String uploadPath="C:/Users/Vostro.MURADALIMJ/Desktop/Youtube Tutorials/ImageTutorial/WebContent/images/"+imageFileName;  // upload path where we have to upload our actual image
-//System.out.println("Upload Path : "+uploadPath);
-//
-//// Uploading our selected image into the images folder
-//
-//try
-//{
-//
-//FileOutputStream fos=new FileOutputStream(uploadPath);
-//InputStream is=file.getInputStream();
-//
-//byte[] data=new byte[is.available()];
-//is.read(data);
-//fos.write(data);
-//fos.close();
-//
-//}
-//
-//catch(Exception e)
-//{
-//	e.printStackTrace();
-//}
