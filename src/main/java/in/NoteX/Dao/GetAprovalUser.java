@@ -40,7 +40,7 @@ public class GetAprovalUser {
                 user.setUsertype(resultSet.getString("usertype"));
            
                 user.setInputStreamFILE(resultSet.getBinaryStream("collegeid") ,1);
-                System.out.println( "@@@@@@"  +resultSet.getBinaryStream("collegeid"));
+               // System.out.println( "@@@@@@"  +resultSet.getBinaryStream("collegeid"));
                 
 				/* user.setPassword(resultSet.getString("password")); */
                 user.setTerms(resultSet.getString("terms"));

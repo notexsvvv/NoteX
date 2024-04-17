@@ -32,16 +32,16 @@ public class UserAproval extends HttpServlet {
                     username = cookie.getValue();
                     break;
                 }
-               System.out.println("cookie username - "+ username);
+             //  System.out.println("cookie username - "+ username);
             }
         }
         
         // Get the token provided in the request
         String providedToken = request.getParameter("token");
-        System.out.println("Token from parameter = "+ providedToken);
+      //  System.out.println("Token from parameter = "+ providedToken);
         // Retrieve the token associated with the username
         String storedToken = UserDaoImpl.getTokenforVerification(username);
-        System.out.println("Stored token in db ="+storedToken);
+        //System.out.println("Stored token in db ="+storedToken);
         // Check if the provided token matches the stored token
         if (!providedToken.equals(storedToken)) {
             // Token is invalid, return unauthorized response
@@ -53,7 +53,7 @@ public class UserAproval extends HttpServlet {
 
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        System.out.println("Servlet called");
+       // System.out.println("Servlet called");
         GetAprovalUser approvalUser = new GetAprovalUser();
         List<StudentUser> userList = null;
         try {
