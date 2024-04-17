@@ -81,7 +81,7 @@ public class UserDaoImpl  {
             preparedStatement.setString(2, username);
 
             int rowsAffected = preparedStatement.executeUpdate();
-            System.out.print("Token at db set = "+ token);
+           // System.out.print("Token at db set = "+ token);
             if (rowsAffected > 0) {
             	return true;
 				
@@ -108,7 +108,7 @@ public class UserDaoImpl  {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     String storedToken = resultSet.getString("token");
-                   // System.out.print("Token at db set = "+ token);
+                   System.out.print("Token at db set = "+ storedToken);
                     return storedToken; // Compare stored token with provided token
                 } else {
                     System.out.print("no match found for the token ");
@@ -132,7 +132,7 @@ public class UserDaoImpl  {
             preparedStatement.setString(1, username);
 
             int rowsAffected = preparedStatement.executeUpdate();
-            System.out.print("data deleted for "+ username);
+           // System.out.print("data deleted for "+ username);
             if (rowsAffected > 0) {
             	return true;
 				
@@ -149,4 +149,9 @@ public class UserDaoImpl  {
         }
    	
  }
+
+
+
+
+
 }

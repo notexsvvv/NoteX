@@ -69,14 +69,14 @@
     <servlet-name>admin</servlet-name>
     <url-pattern>/admin</url-pattern>
   </servlet-mapping>
- <!-- <servlet>
+  <servlet>
     <description></description>
-    <display-name>DeleteUserServlet</display-name>
-    <servlet-name>DeleteUserServlet</servlet-name>
-    <servlet-class>in.NoteX.servlet.DeleteUserServlet</servlet-class>
+    <display-name>acceptUser</display-name>
+    <servlet-name>acceptUser</servlet-name>
+    <servlet-class>in.NoteX.servlet.acceptUser</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DeleteUserServlet</servlet-name>
-    <url-pattern>/deleteUser</url-pattern>
-  </servlet-mapping>-->
+    <servlet-name>acceptUser</servlet-name>
+    <url-pattern>/acceptUser</url-pattern>
+  </servlet-mapping>
 </web-app>

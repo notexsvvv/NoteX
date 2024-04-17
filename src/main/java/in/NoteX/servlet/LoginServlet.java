@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 	        	
 	        	
 	        String userTypeString =	UserDaoImpl.getUserTypeString(username, password);
-	        	System.out.println(userTypeString);
+	        	//System.out.println(userTypeString);
 	        	if(userTypeString.equals("admin")) {
 	        		 HttpSession adminsession = request.getSession();
 	        		 adminsession.setAttribute("usertype", userTypeString);
