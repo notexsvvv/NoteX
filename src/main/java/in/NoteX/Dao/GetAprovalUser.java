@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.NoteX.model.StudentUser;
+import in.NoteX.model.User;
 import in.NoteX.util.DBcon;
 
 
@@ -18,8 +19,8 @@ public class GetAprovalUser {
     
     ResultSet resultSet;
 
-    public List<StudentUser> getUsers() throws SQLException {
-        List<StudentUser> userList = new ArrayList<>();
+    public List<User> getUsers() throws SQLException {
+        List<User> userList = new ArrayList<>();
 
         Connection connection = null;
         Statement stmt = null;
@@ -30,7 +31,7 @@ public class GetAprovalUser {
             resultSet = stmt.executeQuery("SELECT * FROM UserUnderReview");
 
             while (resultSet.next()) {
-                StudentUser user = new StudentUser();
+                User user = new User();
 
                 user.setFullname(resultSet.getString("fullname"));
                 user.setUsername(resultSet.getString("username"));

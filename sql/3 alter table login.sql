@@ -10,7 +10,7 @@ UPDATE login_info SET token = "kdmdmd,dmdd " WHERE username ="admin";
 ## new Query 14 - april run it  data 
 use notex;
 select * from userunderreview;
--- delete from userunderreview where userid =4; 
+-- delete from userunderreview where username ='admin'; 
 
 ALTER TABLE userunderreview
 ADD CONSTRAINT unique_username UNIQUE (username);
@@ -18,6 +18,7 @@ ALTER TABLE userunderreview AUTO_INCREMENT = 1;
 aLTER TABLE userunderreview MODIFY userid INT;
 ALTER TABLE userunderreview DROP PRIMARY KEY;
 ALTER TABLE userunderreview ADD PRIMARY KEY (username);
+ALTER TABLE userunderreview DROP userid;
 
 
 

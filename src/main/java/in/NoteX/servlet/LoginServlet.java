@@ -47,14 +47,38 @@ public class LoginServlet extends HttpServlet {
 						 response.sendRedirect("admin.jsp"); 
 	        	}
 	        	
-	        	else {
-	            HttpSession session = request.getSession();
-	            session.setAttribute("username", username);
-	            session.setAttribute("pass", "vinayak kushwah");
-	            session.setAttribute("usertype", userTypeString);
-	            response.sendRedirect("welcome.jsp");
-	            //System.out.println("Hi - "+username);
+	        	else  if(userTypeString.equals("student")){
+	        		 HttpSession userSession = request.getSession();
+	        		 userSession.setAttribute("usertype", userTypeString);
+	        		 userSession.setAttribute("username", username);
+	        		 
+	        		 String token =TokenGenerator.setToken(username) ;
+	        		 userSession.setAttribute("token",token );
+						
+	        		 Cookie c = new Cookie("token", token);
+	        		 Cookie c1 = new Cookie("username", username);
+	                 response.addCookie(c1);
+	        		 response.addCookie(c);	
+	        		 response.sendRedirect("student.jsp");
 	        	}
+	        	else  if(userTypeString.equals("teacher")){
+	        		 HttpSession userSession = request.getSession();
+	        		 userSession.setAttribute("usertype", userTypeString);
+	        		 userSession.setAttribute("username", username);
+	        		 
+	        		 String token =TokenGenerator.setToken(username) ;
+	        		 userSession.setAttribute("token",token );
+						
+	        		 Cookie c = new Cookie("token", token);
+	        		 Cookie c1 = new Cookie("username", username);
+	                 response.addCookie(c1);
+	        		 response.addCookie(c); 
+	        		 response.sendRedirect("teacher.jsp");
+	           
+	        	}
+	        	
+	        	
+	        	
 	        } else {
 	            response.sendRedirect("login.jsp?error=1");
 	        	System.out.println("Error A gya");

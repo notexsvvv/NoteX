@@ -1,31 +1,40 @@
 package in.NoteX.Dao;
 import in.NoteX.util.DBcon;
+import in.NoteX.model.StudentUser;
+import in.NoteX.model.TeacherUser;
 import in.NoteX.model.User;
+import in.NoteX.servlet.LoginServlet;
+
+import java.io.Console;
+import java.security.PublicKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.catalina.valves.rewrite.Substitution.StaticElement;
+
 public class UserDaoImpl  {
 
 	
 	public static  boolean addUser(User user) {
-		 String query = "INSERT INTO login_info (username, email, password) VALUES (?, ?, ?)";
-
-	        try (Connection connection = DBcon.getConnection();
-	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-	            preparedStatement.setString(1, user.getUsername());
-	            preparedStatement.setString(2, user.getEmail());
-	            preparedStatement.setString(3, user.getPassword());
-
-	            int rowsAffected = preparedStatement.executeUpdate();
-
-	            return rowsAffected > 0;
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	            return false;
-	        }
+				 String query = "INSERT INTO login_info (username, email, password,usertype) VALUES (?, ?, ?,?)";
+		
+			        try (Connection connection = DBcon.getConnection();
+			             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+		
+			            preparedStatement.setString(1, user.getUsername());
+			            preparedStatement.setString(2, user.getEmail());
+			            preparedStatement.setString(3, user.getPassword());
+			            preparedStatement.setString(4, user.getUsertype());
+		
+			            int rowsAffected = preparedStatement.executeUpdate();
+		
+			            return rowsAffected > 0;
+			        } catch (SQLException e) {
+			            e.printStackTrace();
+			            return false;
+			        }
 	}
 
 
@@ -123,7 +132,7 @@ public class UserDaoImpl  {
     }
    	
    	
- public static boolean deleteFromDatabase(String username) {
+   	public static boolean deleteFromDatabase(String username) {
         	
 	 String query = "delete from userunderreview where username =?";
    	 try (Connection connection = DBcon.getConnection();
@@ -149,7 +158,120 @@ public class UserDaoImpl  {
         }
    	
  }
+   	
+   	public static boolean insertIntoDb(String username) {
+   		
+   		 String usertype = getuserType(username);
+   		 
+   		 if (usertype.equals("student")) {
+   			StudentUser user = new StudentUser();
+   			
+   				String query = "SELECT *  FROM userunderreview  WHERE username = ?";
+		   	   	 try (Connection connection = DBcon.getConnection();
+		   	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {		
+		   	            preparedStatement.setString(1, username);		
+		   	            ResultSet resultSet = preparedStatement.executeQuery();		   	            
+		   	         while (resultSet.next()) {
+		                 user.setFullname(resultSet.getString("fullname"));
+		                 user.setUsername(resultSet.getString("username"));
+		                 user.setEmail(resultSet.getString("email"));
+		                 user.setLinkedin(resultSet.getString("linkedin"));
+		                 user.setMobile(resultSet.getString("mobile"));
+		                 user.setUsertype(resultSet.getString("usertype"));
+		                 user.setInputStreamFILE(resultSet.getBinaryStream("collegeid") ,1);
+		                  user.setPassword(resultSet.getString("password")); 
+		                 user.setTerms(resultSet.getString("terms"));
+		   	         }
 
+		   	            
+		   	            
+		   			 
+		   		 }
+		   	   	 catch (Exception e) {
+					System.out.print(e.getLocalizedMessage());
+				}
+		   	   	 
+		   		Boolean rsBoolean=  addUser(user);
+			   	 Boolean iBoolean =  RegdaoImp.addUser(user);
+			   	 
+			   	 if(rsBoolean && iBoolean) {
+			   		 return true;
+			   	 }
+			   	 else {
+			   		 return false ;
+			   	 }
+   		 }
+   			
+   		 else if(usertype.equals("teacher")){
+   			TeacherUser user = new TeacherUser();
+   			
+				String query = "SELECT *  FROM userunderreview  WHERE username = ?";
+	   	   	 try (Connection connection = DBcon.getConnection();
+	   	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {		
+	   	            preparedStatement.setString(1, username);		
+	   	            ResultSet resultSet = preparedStatement.executeQuery();		   	            
+	   	         while (resultSet.next()) {
+	                 user.setFullname(resultSet.getString("fullname"));
+	                 user.setUsername(resultSet.getString("username"));
+	                 user.setEmail(resultSet.getString("email"));
+	                 user.setLinkedin(resultSet.getString("linkedin"));
+	                 user.setMobile(resultSet.getString("mobile"));
+	                 user.setUsertype(resultSet.getString("usertype"));
+	                 user.setPassword(resultSet.getString("password")); 
+	                 user.setInputStreamFILE(resultSet.getBinaryStream("collegeid") ,1);
+	                 user.setTerms(resultSet.getString("terms"));
+	   	         }
+
+	   	            
+	   	            
+	   			 
+	   		 }
+	   	   	 catch (Exception e) {
+				System.out.print(e.getLocalizedMessage());
+			}
+	   	   	Boolean rsBoolean=  addUser(user);
+	   	 Boolean iBoolean =  RegdaoImp.addUser(user);
+	   	 
+	   	 if(rsBoolean && iBoolean) {
+	   		 return true;
+	   	 }
+	   	 else {
+	   		 return false ;
+	   	 }
+   		 }
+   		 
+   		 else {
+   			 System.out.println("Yoser type not found ");
+   			 return false;
+   		 }
+   		
+   	 
+   	}
+
+	private static String getuserType(String username) {
+		String userType ="";
+	   		String query = "SELECT usertype  FROM userunderreview  WHERE username = ?";
+	   	 try (Connection connection = DBcon.getConnection();
+	             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+	            preparedStatement.setString(1, username);
+	           
+
+	            ResultSet resultSet = preparedStatement.executeQuery();
+	            while (resultSet.next()) {
+	            	
+	            	 userType = resultSet.getString("usertype");
+					
+				}
+	            return userType;
+	            
+	           
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return null;
+	        }
+		
+	}
 
 
 
