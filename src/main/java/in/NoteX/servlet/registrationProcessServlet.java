@@ -27,7 +27,7 @@ public class registrationProcessServlet extends HttpServlet {
 	protected Part collegeid;
 	InputStream inputStream = null;
 
-	void insertIntoStudent(StudentUser std) {
+	void insertIntoStudent(User std) {
 		//StudentUser std = new StudentUser();
 		std.setFullname(fullname);
 		std.setUsername(username);
@@ -40,7 +40,7 @@ public class registrationProcessServlet extends HttpServlet {
 		std.setTerms(terms);
 	}
 
-	void insertIntoTeacher(TeacherUser tech) {
+	void insertIntoTeacher(User tech) {
 		
 
 		tech.setFullname(fullname);
@@ -97,6 +97,9 @@ public class registrationProcessServlet extends HttpServlet {
 				System.out.println("conatent type =" + collegeid.getContentType());
 				inputStream = collegeid.getInputStream();
 			}
+			else {
+				System.out.println("imge i9s not avilable at registratroon process Servlet ");
+			}
 		} catch (Exception e) {
 			System.out.println("error in file or image ");
 			response.sendRedirect("Register.jsp?error=5");
@@ -107,7 +110,7 @@ public class registrationProcessServlet extends HttpServlet {
 
 		if (this.password.equals(this.confirm_password)) {
 			if (this.usertype.equals("student")) {
-							StudentUser std = new StudentUser();
+							User std = new User();
 							insertIntoStudent(std);
 							
 							if (RegdaoImp.addUserUnderReviews(std)) {
@@ -117,7 +120,7 @@ public class registrationProcessServlet extends HttpServlet {
 							}
 							outPrintWriter.print("its RegistrationProcess servlet st");
 			} else if (usertype.equals("teacher")) {
-						TeacherUser tech = new TeacherUser();
+						User tech = new User();
 						insertIntoTeacher(tech);
 						if (RegdaoImp.addUserUnderReviews(tech)) {
 							response.sendRedirect("Register.jsp?registration=success");

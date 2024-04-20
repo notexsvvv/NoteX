@@ -4,6 +4,7 @@ package in.NoteX.servlet;
 import in.NoteX.Dao.GetAprovalUser;
 import in.NoteX.Dao.UserDaoImpl;
 import in.NoteX.model.StudentUser;
+import in.NoteX.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -55,7 +56,7 @@ public class UserAproval extends HttpServlet {
         PrintWriter out = response.getWriter();
        // System.out.println("Servlet called");
         GetAprovalUser approvalUser = new GetAprovalUser();
-        List<StudentUser> userList = null;
+        List<User> userList = null;
         try {
             userList = approvalUser.getUsers();
         } catch (SQLException e) {
@@ -64,7 +65,7 @@ public class UserAproval extends HttpServlet {
         }
 
         StringBuilder jsonBuilder = new StringBuilder("[");
-        for (StudentUser user : userList) {
+        for (User user : userList) {
             jsonBuilder.append("{");
             jsonBuilder.append("\"fullname\":").append("\"").append(user.getFullname()).append("\",");
             jsonBuilder.append("\"username\":").append("\"").append(user.getUsername()).append("\",");

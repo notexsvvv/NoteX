@@ -48,7 +48,7 @@ public class DeleteUserServlet extends HttpServlet {
 
         // Perform deletion operation (Replace this with your own logic)
         boolean success = UserDaoImpl.deleteFromDatabase(username);
-
+        
         // Set response content type
         response.setContentType("application/json");
 
