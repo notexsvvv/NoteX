@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 	String string;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		 
 	       String username = request.getParameter("username");
 	        String password = request.getParameter("password");
 	      
@@ -30,6 +30,8 @@ public class LoginServlet extends HttpServlet {
 	        String userTypeString =	UserDaoImpl.getUserTypeString(username, password);
 	        	//System.out.println(userTypeString);
 	        	if(userTypeString.equals("admin")) {
+	        		String pathInfo ="admin.jsp";
+	        				//request.getPathInfo();
 	        		 HttpSession adminsession = request.getSession();
 	        		 adminsession.setAttribute("usertype", userTypeString);
 	        		 adminsession.setAttribute("username", username);
@@ -44,11 +46,13 @@ public class LoginServlet extends HttpServlet {
 	        		 Cookie c1 = new Cookie("username", username);
 	                 response.addCookie(c1);
 	        		 response.addCookie(c);
-						 response.sendRedirect("admin.jsp"); 
+					//response.sendRedirect("WEB-INF/jsp/secured/admin.jsp"); 
+	        		 request.getRequestDispatcher("/WEB-INF/jsp/secured/admin/" + pathInfo).forward(request, response);
 	        	}
 	        	
 	        	else  if(userTypeString.equals("student")){
-	        		 HttpSession userSession = request.getSession();
+	        		String pathInfo ="student.jsp";
+	        		HttpSession userSession = request.getSession();
 	        		 userSession.setAttribute("usertype", userTypeString);
 	        		 userSession.setAttribute("username", username);
 	        		 
@@ -59,7 +63,8 @@ public class LoginServlet extends HttpServlet {
 	        		 Cookie c1 = new Cookie("username", username);
 	                 response.addCookie(c1);
 	        		 response.addCookie(c);	
-	        		 response.sendRedirect("student.jsp");
+	        		// response.sendRedirect("student.jsp");
+	        		 request.getRequestDispatcher("/WEB-INF/jsp/secured/student/" + pathInfo).forward(request, response);
 	        	}
 	        	else  if(userTypeString.equals("teacher")){
 	        		 HttpSession userSession = request.getSession();
@@ -73,7 +78,8 @@ public class LoginServlet extends HttpServlet {
 	        		 Cookie c1 = new Cookie("username", username);
 	                 response.addCookie(c1);
 	        		 response.addCookie(c); 
-	        		 response.sendRedirect("teacher.jsp");
+	        		// response.sendRedirect("teacher.jsp");
+	        		 request.getRequestDispatcher("/WEB-INF/jsp/secured/teacher/" + "teacher.jsp").forward(request, response);
 	           
 	        	}
 	        	
